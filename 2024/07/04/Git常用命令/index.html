@@ -16,22 +16,22 @@
   <meta name="author" content="yang zheng">
   <meta name="keywords" content="programmer,coder,father">
   
-    <meta name="description" content="HashMap的结构: 数组加链表组成 数组中元素是可扩展的链表,数组的初始长度为16,负载因子0.75 1.7中插入entry是使用头插法,1.8之后是使用尾插法 1.8版本后的HashMap链表在满意一定条件下会转换成红黑树,便于提高遍历效率 数组长度64以上,单节点链表长度达到8以上 当红黑树元素少于6个时,会再次转换回链表    PUT GET:PUT(key,value): HashMa">
+    <meta name="description" content="git config --global user.name &quot;xxx&quot;                       # 配置用户名 git config --global user.email &quot;xxx@xxx.com&quot;              # 配置邮件 git config --global color.ui true">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HashMap">
-<meta property="og:url" content="https://lidll.github.io/2024/06/26/HashMap/index.html">
+<meta property="og:title" content="Git常用命令">
+<meta property="og:url" content="https://lidll.github.io/2024/07/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="虾仔的秘密基地">
-<meta property="og:description" content="HashMap的结构: 数组加链表组成 数组中元素是可扩展的链表,数组的初始长度为16,负载因子0.75 1.7中插入entry是使用头插法,1.8之后是使用尾插法 1.8版本后的HashMap链表在满意一定条件下会转换成红黑树,便于提高遍历效率 数组长度64以上,单节点链表长度达到8以上 当红黑树元素少于6个时,会再次转换回链表    PUT GET:PUT(key,value): HashMa">
+<meta property="og:description" content="git config --global user.name &quot;xxx&quot;                       # 配置用户名 git config --global user.email &quot;xxx@xxx.com&quot;              # 配置邮件 git config --global color.ui true">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-06-26T03:03:05.000Z">
-<meta property="article:modified_time" content="2024-07-04T09:22:44.376Z">
+<meta property="article:published_time" content="2024-07-04T09:16:45.000Z">
+<meta property="article:modified_time" content="2024-07-04T09:42:28.216Z">
 <meta property="article:author" content="yang zheng">
-<meta property="article:tag" content="HashMap">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>HashMap - 虾仔的秘密基地</title>
+  <title>Git常用命令 - 虾仔的秘密基地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="HashMap"></span>
+            <span id="subtitle" data-typed-text="Git常用命令"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-26 11:03" pubdate>
-          2024年6月26日 上午
+        <time datetime="2024-07-04 17:16" pubdate>
+          2024年7月4日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          649 字
+          929 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          6 分钟
+          8 分钟
         
       </span>
     
@@ -268,61 +268,98 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">HashMap</h1>
+            <h1 id="seo-header">Git常用命令</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="HashMap的结构"><a href="#HashMap的结构" class="headerlink" title="HashMap的结构:"></a>HashMap的结构:</h4><ul>
-<li>数组加链表组成</li>
-<li>数组中元素是可扩展的链表,数组的初始长度为<strong>16</strong>,负载因子<strong>0.75</strong></li>
-<li>1.7中插入entry是使用<strong>头插法</strong>,1.8之后是使用<strong>尾插法</strong></li>
-<li>1.8版本后的HashMap链表在满意一定条件下会转换成红黑树,便于提高遍历效率<ul>
-<li>数组长度<strong>64</strong>以上,单节点链表长度达到<strong>8</strong>以上</li>
-<li>当红黑树元素少于<strong>6</strong>个时,会再次转换回链表</li>
-</ul>
-</li>
-</ul>
-<h4 id="PUT-GET"><a href="#PUT-GET" class="headerlink" title="PUT GET:"></a>PUT GET:</h4><h6 id="PUT-key-value"><a href="#PUT-key-value" class="headerlink" title="PUT(key,value):"></a>PUT(key,value):</h6><ul>
-<li><p>HashMap中的元素是以键值对保存,每个键值对称为一个<strong>entry</strong></p>
-</li>
-<li><p>在插入元素时,会获取key的HashCode,然后与初始长度进行与运算来确定元素存放在数组的哪个位置</p>
-<blockquote>
-<p> HashCode &amp; (length - 1) &#x3D; index   </p>
-<p> length代表初始长度 index代表数组的存放位置</p>
-</blockquote>
-<p><em><strong>Q:为什么初始长度为16?</strong></em></p>
-<p>A:16-1的二进制表示为<code>1111</code>,在使用HashCode的二进制与运算时,可以控制index值是均匀遍布数组索引,所以初始长度设计为16,map的扩容成两倍扩容也是出于找各种考虑.</p>
-</li>
-<li><p>当然,index也存在重复的情况,比如map中index1位置已经存在元素,而要保存的entry也需要保存到index1位置,此时就会就如下处理:</p>
-<ul>
-<li>1.7版本: 将当前数组位置的元素移动到链表后,将新插入的元素放在链表首位,设计原因是考虑新插入的元素在最近时间内获取的可能性更高,利于查找</li>
-<li>1.8版本: 在当前数组位置的链表中插入在后一位</li>
-</ul>
-</li>
-</ul>
-<h5 id="GET-key"><a href="#GET-key" class="headerlink" title="GET(key)"></a>GET(key)</h5><ul>
-<li>通过key的HashCode通过计算<code>HashCode &amp; (length - 1)</code>位运算的方式获取到index</li>
-<li>通过index找到对应的数组位置<ul>
-<li>如果当前位置只有一个元素,则直接返回</li>
-<li>如果当前位置有链表存在,则逐个遍历,通过key的equal()来判断并找到对应的key,如果找到则返回,否则返回null</li>
-</ul>
-</li>
-</ul>
-<h5 id="转换成红黑树"><a href="#转换成红黑树" class="headerlink" title="转换成红黑树"></a>转换成红黑树</h5><blockquote>
-<p>JDK1.8版本开始,HashMap的结构调整为数组加链表,以及根据元素情况,将链表结构调整为红黑树来提高查找效率</p>
-</blockquote>
-<ul>
-<li>转成红黑树的条件:<ul>
-<li>当前map的容量大于64时,才允许树形化链表</li>
-<li>当链表长度大于8时,才做树形化</li>
-</ul>
-</li>
-<li>转换回红黑树的条件:<ul>
-<li>当进行resize()方法(扩容),此时HashMap会重新计算数据存储位置,当原有红黑树中的元素小于6时,会将树转换成链表</li>
-</ul>
-</li>
-</ul>
+                <pre><code class="shell">git config --global user.name &quot;xxx&quot;                       # 配置用户名
+git config --global user.email &quot;xxx@xxx.com&quot;              # 配置邮件
+git config --global color.ui true                         # git status等命令自动着色
+git config --global color.status auto
+git config --global color.diff auto
+git config --global color.branch auto
+git config --global color.interactive auto
+git config --global --unset http.proxy                    # remove  proxy configuration on git
+git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库
+git status                                                # 查看当前版本状态（是否修改）
+git add xyz                                               # 添加xyz文件至index
+git add .                                                 # 增加当前子目录下所有更改过的文件至index
+git commit -m &#39;xxx&#39;                                       # 提交
+git commit --amend -m &#39;xxx&#39;                               # 合并上一次提交（用于反复修改）
+git commit -am &#39;xxx&#39;                                      # 将add和commit合为一步
+git rm xxx                                                # 删除index中的文件
+git rm -r *                                               # 递归删除
+git log                                                   # 显示提交日志
+git log -1                                                # 显示1行日志 -n为n行
+git log -5
+git log --stat                                            # 显示提交日志及相关变动文件
+git log -p -m
+git show dfb02e6e4f2f7b573337763e5c0013802e392818         # 显示某个提交的详细内容
+git show dfb02                                            # 可只用commitid的前几位
+git show HEAD                                             # 显示HEAD提交日志
+git show HEAD^                                            # 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本
+git tag                                                   # 显示已存在的tag
+git tag -a v2.0 -m &#39;xxx&#39;                                  # 增加v2.0的tag
+git show v2.0                                             # 显示v2.0的日志及详细内容
+git log v2.0                                              # 显示v2.0的日志
+git diff                                                  # 显示所有未添加至index的变更
+git diff --cached                                         # 显示所有已添加index但还未commit的变更
+git diff HEAD^                                            # 比较与上一个版本的差异
+git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异
+git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的
+git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容
+git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）
+git branch                                                # 显示本地分支
+git branch --contains 50089                               # 显示包含提交50089的分支
+git branch -a                                             # 显示所有分支
+git branch -r                                             # 显示所有原创分支
+git branch --merged                                       # 显示所有已合并到当前分支的分支
+git branch --no-merged                                    # 显示所有未合并到当前分支的分支
+git branch -m master master_copy                          # 本地分支改名
+git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出
+git checkout -b master master_copy                        # 上面的完整版
+git checkout features/performance                         # 检出已存在的features/performance分支
+git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支
+git checkout v2.0                                         # 检出版本v2.0
+git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出
+git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）
+git merge origin/master                                   # 合并远程master分支至当前分支
+git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改
+git push origin master                                    # 将当前分支push到远程master分支
+git push origin :hotfixes/BJVEP933                        # 删除远程仓库的hotfixes/BJVEP933分支
+git push --tags                                           # 把所有tag推送到远程仓库
+git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）
+git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支
+git pull origin master                                    # 获取远程分支master并merge到当前分支
+git mv README README2                                     # 重命名文件README为README2
+git reset --hard HEAD                                     # 将当前版本重置为HEAD（通常用于merge失败回退）
+git rebase
+git branch -d hotfixes/BJVEP933                           # 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）
+git branch -D hotfixes/BJVEP933                           # 强制删除分支hotfixes/BJVEP933
+git ls-files                                              # 列出git index包含的文件
+git show-branch                                           # 图示当前分支历史
+git show-branch --all                                     # 图示所有分支历史
+git whatchanged                                           # 显示提交历史对应的文件修改
+git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818
+git ls-tree HEAD                                          # 内部命令：显示某个git对象
+git rev-parse v2.0                                        # 内部命令：显示某个ref对于的SHA1 HASH
+git reflog                                                # 显示所有提交，包括孤立节点
+git show HEAD@&#123;5&#125;
+git show master@&#123;yesterday&#125;                               # 显示master分支昨天的状态
+git log --pretty=format:&#39;%h %s&#39; --graph                   # 图示提交日志
+git show HEAD~3
+git show -s --pretty=raw 2be7fcb476
+git stash                                                 # 暂存当前修改，将所有至为HEAD状态
+git stash list                                            # 查看所有暂存
+git stash show -p stash@&#123;0&#125;                               # 参考第一次暂存
+git stash apply stash@&#123;0&#125;                                 # 应用第一次暂存
+git grep &quot;delete from&quot;                                    # 文件中搜索文本“delete from”
+git grep -e &#39;#define&#39; --and -e SORT_DIRENT
+git gc
+git fsck 
+git init                                                  # 初始化本地git仓库（创建新仓库）
+</code></pre>
 
                 
               </div>
@@ -335,7 +372,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/HashMap/" class="print-no-link">#HashMap</a>
+        <a href="/tags/Git/" class="print-no-link">#Git</a>
       
     </div>
   
@@ -347,8 +384,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>HashMap</div>
-      <div>https://lidll.github.io/2024/06/26/HashMap/</div>
+      <div>Git常用命令</div>
+      <div>https://lidll.github.io/2024/07/04/Git常用命令/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +397,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月26日</div>
+          <div>2024年7月4日</div>
         </div>
       
       
@@ -392,15 +429,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/26/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="java多线程">
+                      <a href="/2024/07/04/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Lambda表达式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">java多线程</span>
+                        <span class="hidden-mobile">Lambda表达式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/06/26/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="java多线程">
+                        <span class="hidden-mobile">java多线程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

@@ -16,22 +16,22 @@
   <meta name="author" content="yang zheng">
   <meta name="keywords" content="programmer,coder,father">
   
-    <meta name="description" content="HashMap的结构: 数组加链表组成 数组中元素是可扩展的链表,数组的初始长度为16,负载因子0.75 1.7中插入entry是使用头插法,1.8之后是使用尾插法 1.8版本后的HashMap链表在满意一定条件下会转换成红黑树,便于提高遍历效率 数组长度64以上,单节点链表长度达到8以上 当红黑树元素少于6个时,会再次转换回链表    PUT GET:PUT(key,value): HashMa">
+    <meta name="description" content="面向对象6个基本原则单一职责原则引起一个类产生变化的原因只能是单一的 里氏替换原则有父类的地方,子类就可以使用 依赖倒置原则 模块之间的依赖是通过抽象类或接口的依赖产生的 抽象类或接口不依赖具体的实现类 实现类依赖接口或抽象类  所以为了降低实现类的耦合以及模块之间的松散度,要遵循几个原则:  每个类尽量都有接口或抽象类,或有抽象类和接口 变量的表面类型尽量是接口或者抽象类 任何类都不应该从具体类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HashMap">
-<meta property="og:url" content="https://lidll.github.io/2024/06/26/HashMap/index.html">
+<meta property="og:title" content="面向对象的6个基本原则">
+<meta property="og:url" content="https://lidll.github.io/2024/07/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%846%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/index.html">
 <meta property="og:site_name" content="虾仔的秘密基地">
-<meta property="og:description" content="HashMap的结构: 数组加链表组成 数组中元素是可扩展的链表,数组的初始长度为16,负载因子0.75 1.7中插入entry是使用头插法,1.8之后是使用尾插法 1.8版本后的HashMap链表在满意一定条件下会转换成红黑树,便于提高遍历效率 数组长度64以上,单节点链表长度达到8以上 当红黑树元素少于6个时,会再次转换回链表    PUT GET:PUT(key,value): HashMa">
+<meta property="og:description" content="面向对象6个基本原则单一职责原则引起一个类产生变化的原因只能是单一的 里氏替换原则有父类的地方,子类就可以使用 依赖倒置原则 模块之间的依赖是通过抽象类或接口的依赖产生的 抽象类或接口不依赖具体的实现类 实现类依赖接口或抽象类  所以为了降低实现类的耦合以及模块之间的松散度,要遵循几个原则:  每个类尽量都有接口或抽象类,或有抽象类和接口 变量的表面类型尽量是接口或者抽象类 任何类都不应该从具体类">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-06-26T03:03:05.000Z">
-<meta property="article:modified_time" content="2024-07-04T09:22:44.376Z">
+<meta property="article:published_time" content="2024-07-04T09:35:57.000Z">
+<meta property="article:modified_time" content="2024-07-04T09:41:50.128Z">
 <meta property="article:author" content="yang zheng">
-<meta property="article:tag" content="HashMap">
+<meta property="article:tag" content="OOP">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>HashMap - 虾仔的秘密基地</title>
+  <title>面向对象的6个基本原则 - 虾仔的秘密基地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="HashMap"></span>
+            <span id="subtitle" data-typed-text="面向对象的6个基本原则"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-26 11:03" pubdate>
-          2024年6月26日 上午
+        <time datetime="2024-07-04 17:35" pubdate>
+          2024年7月4日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          649 字
+          365 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          6 分钟
+          4 分钟
         
       </span>
     
@@ -268,62 +268,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">HashMap</h1>
+            <h1 id="seo-header">面向对象的6个基本原则</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="HashMap的结构"><a href="#HashMap的结构" class="headerlink" title="HashMap的结构:"></a>HashMap的结构:</h4><ul>
-<li>数组加链表组成</li>
-<li>数组中元素是可扩展的链表,数组的初始长度为<strong>16</strong>,负载因子<strong>0.75</strong></li>
-<li>1.7中插入entry是使用<strong>头插法</strong>,1.8之后是使用<strong>尾插法</strong></li>
-<li>1.8版本后的HashMap链表在满意一定条件下会转换成红黑树,便于提高遍历效率<ul>
-<li>数组长度<strong>64</strong>以上,单节点链表长度达到<strong>8</strong>以上</li>
-<li>当红黑树元素少于<strong>6</strong>个时,会再次转换回链表</li>
+                <h2 id="面向对象6个基本原则"><a href="#面向对象6个基本原则" class="headerlink" title="面向对象6个基本原则"></a>面向对象6个基本原则</h2><h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><p>引起一个类产生变化的原因只能是单一的</p>
+<h3 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h3><p>有父类的地方,子类就可以使用</p>
+<h3 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h3><ul>
+<li>模块之间的依赖是通过抽象类或接口的依赖产生的</li>
+<li>抽象类或接口不依赖具体的实现类</li>
+<li>实现类依赖接口或抽象类</li>
 </ul>
-</li>
-</ul>
-<h4 id="PUT-GET"><a href="#PUT-GET" class="headerlink" title="PUT GET:"></a>PUT GET:</h4><h6 id="PUT-key-value"><a href="#PUT-key-value" class="headerlink" title="PUT(key,value):"></a>PUT(key,value):</h6><ul>
-<li><p>HashMap中的元素是以键值对保存,每个键值对称为一个<strong>entry</strong></p>
-</li>
-<li><p>在插入元素时,会获取key的HashCode,然后与初始长度进行与运算来确定元素存放在数组的哪个位置</p>
-<blockquote>
-<p> HashCode &amp; (length - 1) &#x3D; index   </p>
-<p> length代表初始长度 index代表数组的存放位置</p>
-</blockquote>
-<p><em><strong>Q:为什么初始长度为16?</strong></em></p>
-<p>A:16-1的二进制表示为<code>1111</code>,在使用HashCode的二进制与运算时,可以控制index值是均匀遍布数组索引,所以初始长度设计为16,map的扩容成两倍扩容也是出于找各种考虑.</p>
-</li>
-<li><p>当然,index也存在重复的情况,比如map中index1位置已经存在元素,而要保存的entry也需要保存到index1位置,此时就会就如下处理:</p>
+<p>所以为了降低实现类的耦合以及模块之间的松散度,要遵循几个原则:</p>
 <ul>
-<li>1.7版本: 将当前数组位置的元素移动到链表后,将新插入的元素放在链表首位,设计原因是考虑新插入的元素在最近时间内获取的可能性更高,利于查找</li>
-<li>1.8版本: 在当前数组位置的链表中插入在后一位</li>
+<li>每个类尽量都有接口或抽象类,或有抽象类和接口</li>
+<li>变量的表面类型尽量是接口或者抽象类</li>
+<li>任何类都不应该从具体类派生</li>
+<li>尽量不要覆写基类的方法</li>
+<li>结合里氏替换原则使用,(有父类的地方,子类就可以使用)</li>
 </ul>
-</li>
-</ul>
-<h5 id="GET-key"><a href="#GET-key" class="headerlink" title="GET(key)"></a>GET(key)</h5><ul>
-<li>通过key的HashCode通过计算<code>HashCode &amp; (length - 1)</code>位运算的方式获取到index</li>
-<li>通过index找到对应的数组位置<ul>
-<li>如果当前位置只有一个元素,则直接返回</li>
-<li>如果当前位置有链表存在,则逐个遍历,通过key的equal()来判断并找到对应的key,如果找到则返回,否则返回null</li>
-</ul>
-</li>
-</ul>
-<h5 id="转换成红黑树"><a href="#转换成红黑树" class="headerlink" title="转换成红黑树"></a>转换成红黑树</h5><blockquote>
-<p>JDK1.8版本开始,HashMap的结构调整为数组加链表,以及根据元素情况,将链表结构调整为红黑树来提高查找效率</p>
-</blockquote>
+<p>正置和倒置:</p>
 <ul>
-<li>转成红黑树的条件:<ul>
-<li>当前map的容量大于64时,才允许树形化链表</li>
-<li>当链表长度大于8时,才做树形化</li>
+<li>正置就是当需要产生依赖的时候,就直接依赖到具体的实现类</li>
+<li>而倒置则是当需要产生依赖的时候,去依赖实现类的接口或抽象类,从而降低开发中变更引起的修改风险,同时降低模块和功能的耦合.</li>
 </ul>
-</li>
-<li>转换回红黑树的条件:<ul>
-<li>当进行resize()方法(扩容),此时HashMap会重新计算数据存储位置,当原有红黑树中的元素小于6时,会将树转换成链表</li>
-</ul>
-</li>
-</ul>
-
+<h3 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h3><p>强调接口的业务需要保持单一,接口对外暴露的方法</p>
+<h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><p>接口对外开放扩展，对内封闭修改</p>
+<h3 id="迪米特法则（最少知识原则）"><a href="#迪米特法则（最少知识原则）" class="headerlink" title="迪米特法则（最少知识原则）"></a>迪米特法则（最少知识原则）</h3>
                 
               </div>
             
@@ -335,7 +307,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/HashMap/" class="print-no-link">#HashMap</a>
+        <a href="/tags/OOP/" class="print-no-link">#OOP</a>
       
     </div>
   
@@ -347,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>HashMap</div>
-      <div>https://lidll.github.io/2024/06/26/HashMap/</div>
+      <div>面向对象的6个基本原则</div>
+      <div>https://lidll.github.io/2024/07/04/面向对象的6个基本原则/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +332,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月26日</div>
+          <div>2024年7月4日</div>
         </div>
       
       
@@ -392,15 +364,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/26/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="java多线程">
+                      <a href="/2024/07/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">java多线程</span>
+                        <span class="hidden-mobile">设计模式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/07/04/%E8%A7%A3%E5%86%B3-Cannot-determine-embedded-database-driver-class-for-database-type-NONE/" title="解决 Cannot determine embedded database driver class for database type NONE">
+                        <span class="hidden-mobile">解决 Cannot determine embedded database driver class for database type NONE</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
