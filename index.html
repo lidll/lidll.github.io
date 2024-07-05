@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/java-lang-OutOfMemoryError-Java-heap-space%E5%8F%91%E9%80%81%E5%B8%A6%E6%9C%89%E9%99%84%E4%BB%B6%E7%9A%84%E9%82%AE%E4%BB%B6OOM%E9%97%AE%E9%A2%98/" target="_self">
-          java.lang.OutOfMemoryError: Java heap space发送带有附件的邮件OOM问题
+        <a href="/2024/07/05/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/" target="_self">
+          (⌨Java) 线程池基础常识
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/java-lang-OutOfMemoryError-Java-heap-space%E5%8F%91%E9%80%81%E5%B8%A6%E6%9C%89%E9%99%84%E4%BB%B6%E7%9A%84%E9%82%AE%E4%BB%B6OOM%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/05/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          项目概况:结合街道办事处日常的工作场景,以街道办管辖的社区及人员结构为基础.开发了一套”通知”,”统计”,”任务分派”等功能合集的效率办公平台. 项目部署在客户现场,两台4核16G服务器100,101ip段. 100机部署无高io应用 101机部署IO高应用及数据库 起因:客户反馈’’通知’’应用中的附件发送到邮件时提示”发送失败”. 排查问题:首先从报错接口定位到项目具体controller对应
+          线程池的基础常识1. ThreadPoolExecutor有哪些常用的方法? submit()&#x2F;execute(): 执行线程池 shutdown()&#x2F;shutdownNow(): 终止线程  isShutdown(): 线程池是否终止 getActiveCount(): 正在运行的线程数 getCorePoolSize(): 核心线程数 getMaximumPoolSize(
         </div>
       </a>
 
@@ -243,17 +243,166 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:38" pubdate>
-              2024-07-04
+            <time datetime="2024-07-05 17:33" pubdate>
+              2024-07-05
             </time>
           </div>
         
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E2%8C%A8Java/" class="category-chain-item">⌨Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/oom/">#oom</a>
+              <a href="/tags/Thread/">#Thread</a>
+            
+              <a href="/tags/ThreadPool/">#ThreadPool</a>
+            
+              <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">#线程池</a>
+            
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#多线程</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
+          (⌨Java) 设计模式
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
+        <div>
+          单例模式Singleton 这种类型设计模式属于创建型模式,塌提供了一种创建对象的最佳方式.这种模式设计到一个单一的类,该类负责创建自己的对象,同事确保只有单个对象被创建.这个类提供了一种访问其唯一的对象的方式,可以直接访问,不需要实例化该类的对象.   懒汉式 双重检验 静态内部类 枚举   饿汉式  工厂模式Factory 在工厂模式中,我们在创建对象时不会对客户端暴露创建逻辑,并且是通过使用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-05 13:36" pubdate>
+              2024-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E2%8C%A8Java/" class="category-chain-item">⌨Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/05/%E8%A7%A3%E5%86%B3-Cannot-determine-embedded-database-driver-class-for-database-type-NONE/" target="_self">
+          (📒Note) 解决 Cannot determine embedded database driver class for database type NONE
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/05/%E8%A7%A3%E5%86%B3-Cannot-determine-embedded-database-driver-class-for-database-type-NONE/" target="_self">
+        <div>
+          网络上的解决办法 查到过3种: 增加SpringBootApplication exclude 排除依赖 增加依赖h2database  但是我的问题其实非常简单,但是在出现问题的时候非常容易忽略,那就是: 启动类的位置放到了不合适的子目录下 所以不论如何增加exclude,修改依赖,都会有问题存在,而且越改越迷糊,因为在这个问题存在的情况下,你修改了的exclude或者增删依赖,还会出现另外别的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-05 13:35" pubdate>
+              2024-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%F0%9F%93%92Note/" class="category-chain-item">📒Note</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/debug/">#debug</a>
             
           </div>
         
@@ -268,7 +417,7 @@
       <h2 class="index-header">
         
         <a href="/2024/07/04/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9B%B8%E5%85%B3/" target="_self">
-          线程池相关
+          (⌨Java) 线程池
         </a>
       </h2>
 
@@ -289,6 +438,27 @@
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E2%8C%A8Java/" class="category-chain-item">⌨Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
@@ -297,45 +467,9 @@
             
               <a href="/tags/ThreadPool/">#ThreadPool</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/07/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
-          设计模式
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
-        <div>
-          设计模式 Design pattern单例模式Singleton 这种类型设计模式属于创建型模式,塌提供了一种创建对象的最佳方式.这种模式设计到一个单一的类,该类负责创建自己的对象,同事确保只有单个对象被创建.这个类提供了一种访问其唯一的对象的方式,可以直接访问,不需要实例化该类的对象.   懒汉式 双重检验 静态内部类 枚举   饿汉式  工厂模式Factory 在工厂模式中,我们在创建对象时不
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:36" pubdate>
-              2024-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">#线程池</a>
             
-              <a href="/tags/DP/">#DP</a>
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#多线程</a>
             
           </div>
         
@@ -350,7 +484,7 @@
       <h2 class="index-header">
         
         <a href="/2024/07/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%846%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" target="_self">
-          面向对象的6个基本原则
+          (⌨Java) 面向对象的6个基本原则
         </a>
       </h2>
 
@@ -371,6 +505,27 @@
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E2%8C%A8Java/" class="category-chain-item">⌨Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
@@ -389,90 +544,8 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/%E8%A7%A3%E5%86%B3-Cannot-determine-embedded-database-driver-class-for-database-type-NONE/" target="_self">
-          解决 Cannot determine embedded database driver class for database type NONE
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/%E8%A7%A3%E5%86%B3-Cannot-determine-embedded-database-driver-class-for-database-type-NONE/" target="_self">
-        <div>
-          网络上的解决办法 查到过3种: 增加SpringBootApplication exclude 排除依赖 增加依赖h2database  但是我的问题其实非常简单,但是在出现问题的时候非常容易忽略,那就是: 启动类的位置放到了不合适的子目录下 所以不论如何增加exclude,修改依赖,都会有问题存在,而且越改越迷糊,因为在这个问题存在的情况下,你修改了的exclude或者增删依赖,还会出现另外别的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:35" pubdate>
-              2024-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/debug/">#debug</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/07/04/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/" target="_self">
-          关于线程池的几个问题
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          关于线程池的几个问题1.ThreadPoolExecutor有哪些常用的方法? submit()&#x2F;execute(): 执行线程池 shutdown()&#x2F;shutdownNow(): 终止线程  isShutdown(): 线程池是否终止 getActiveCount(): 正在运行的线程数 getCorePoolSize(): 核心线程数 getMaximumPoolSize
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:33" pubdate>
-              2024-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Thread/">#Thread</a>
-            
-              <a href="/tags/ThreadPool/">#ThreadPool</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2024/07/04/webpack%E5%AE%89%E8%A3%85/" target="_self">
-          webpack安装
+          (💻️Front) webpack安装
         </a>
       </h2>
 
@@ -492,6 +565,27 @@
             </time>
           </div>
         
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%F0%9F%92%BB%EF%B8%8FFront/" class="category-chain-item">💻️Front</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
         
         
           <div class="post-meta">
@@ -514,7 +608,7 @@
       <h2 class="index-header">
         
         <a href="/2024/07/04/Vuex/" target="_self">
-          Vuex
+          (💻️Front) Vuex
         </a>
       </h2>
 
@@ -534,6 +628,27 @@
             </time>
           </div>
         
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%F0%9F%92%BB%EF%B8%8FFront/" class="category-chain-item">💻️Front</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
         
         
           <div class="post-meta">
@@ -557,15 +672,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/vue-cli%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          vue-cli的使用
+        <a href="/2024/07/04/SpringBoot%E7%AC%94%E8%AE%B0/" target="_self">
+          (⌨Java) SpringBoot笔记
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/vue-cli%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/SpringBoot%E7%AC%94%E8%AE%B0/" target="_self">
         <div>
-          命令:全局安装vue-cli: sudo管理员运行 1sudo npm install @vue/cli -g   全局安装cli2模板: 1sudo npm install @vue/cli-init -g    Vue CLI2初始化项目 ​	vue init webpack my-project  Vue CLI3初始化项目 ​	vue create my-proje
+          自动装配的原理源码原理: (版本1.5.16.RELEASE)1.SpringBoot项目都会在application启动类上使用注解@SpringBootApplication 2.@SpringBootApplication中包含一下注解 123@SpringBootConfiguration //springboot相关配置 spring的一个组件@EnableAutoConfigurati
         </div>
       </a>
 
@@ -573,21 +688,38 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:31" pubdate>
+            <time datetime="2024-07-04 17:29" pubdate>
               2024-07-04
             </time>
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E2%8C%A8Java/" class="category-chain-item">⌨Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/VUE/">#VUE</a>
-            
-              <a href="/tags/vue/">#vue</a>
-            
-              <a href="/tags/vue-cli/">#vue-cli</a>
+              <a href="/tags/SpringBoot/">#SpringBoot</a>
             
           </div>
         
@@ -601,15 +733,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/VUE%E5%88%9D%E8%AF%86/" target="_self">
-          VUE初识
+        <a href="/2024/07/04/SQL%E8%AF%AD%E5%8F%A5%E4%BC%98%E5%8C%96/" target="_self">
+          (📦DB) SQL语句优化
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/VUE%E5%88%9D%E8%AF%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/SQL%E8%AF%AD%E5%8F%A5%E4%BC%98%E5%8C%96/" target="_self">
         <div>
-          一.邂逅Vuejs1.1认识Vuejs 为什么学习vue  vue的读音  vue的渐进式  vue的特点   1.2安装vue CDN引入 下载引入 npm安装  1.3vue的初体验 hello Vuejs  mustache &gt; 体验vue响应式   Vue列表展示 v-for 后面给数组追加元素的时候,新的元素也可以再界面中渲染出来   Vue计数器小案例 事件监听:click -&
+          优化方法1.查询时避免全表扫描，所以在where和order by涉及的列上建立索引 2.避免在where子句中使用!&#x3D; , &lt;&gt;操作符 这会导致引擎放弃索引而进行全表扫描 3.避免在where子句中对字段进行null值判断,会导致全表扫描,所以在建立字段时,给一个默认值 4.使用like语句时,条件不要使用%前缀,否则导致全表扫描 5.避免在where子句中对字段进行函数操
         </div>
       </a>
 
@@ -617,17 +749,101 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:30" pubdate>
+            <time datetime="2024-07-04 17:28" pubdate>
               2024-07-04
             </time>
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%F0%9F%97%83DB/" class="category-chain-item">🗃DB</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/VUE/">#VUE</a>
+              <a href="/tags/Mysql/">#Mysql</a>
+            
+              <a href="/tags/SQL/">#SQL</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/04/Spring%E5%8A%A0%E8%BD%BDbean%E7%9A%84%E8%BF%87%E7%A8%8B/" target="_self">
+          (⌨Java) Spring加载bean的过程
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/Spring%E5%8A%A0%E8%BD%BDbean%E7%9A%84%E8%BF%87%E7%A8%8B/" target="_self">
+        <div>
+          spring加载bean的过程加载xml &gt; 解析xml &gt; 封装BeanDefinition &gt; 实例化 &gt; 放在容器中 &gt; 从容器中获取 容器:用来存放bean &gt; Map结构存储 &gt; 存储形式 &gt; 三级缓存  存数形式猜想  1234k:Stirng v:Objectk:Class v:Objectk:String v:ObjectFactor
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-04 17:27" pubdate>
+              2024-07-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E2%8C%A8Java/" class="category-chain-item">⌨Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Spring/">#Spring</a>
             
           </div>
         
