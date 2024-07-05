@@ -16,25 +16,23 @@
   <meta name="author" content="yang zheng">
   <meta name="keywords" content="programmer,coder,father">
   
-    <meta name="description" content="创建线程池的几种方式1.jdk自带的几种线程池方案: 123456ExecutorService executorService &#x3D; Executors.newFixedThreadPool(10);ExecutorService executorService1 &#x3D; Executors.newCachedThreadPool();ExecutorService executorService2">
+    <meta name="description" content="项目概况:结合街道办事处日常的工作场景,以街道办管辖的社区及人员结构为基础.开发了一套”通知”,”统计”,”任务分派”等功能合集的效率办公平台. 项目部署在客户现场,两台4核16G服务器100,101ip段. 100机部署无高io应用 101机部署IO高应用及数据库 起因:客户反馈’’通知’’应用中的附件发送到邮件时提示”发送失败”. 排查问题:首先从报错接口定位到项目具体controller对应">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(⌨Java) 线程池">
-<meta property="og:url" content="https://lidll.github.io/2024/07/04/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:title" content="(📒Note) java.lang.OutOfMemoryError：Java_heap_space发送带有附件的邮件OOM问题">
+<meta property="og:url" content="https://lidll.github.io/2024/07/02/java-lang-OutOfMemoryError-Java-heap-space%E5%8F%91%E9%80%81%E5%B8%A6%E6%9C%89%E9%99%84%E4%BB%B6%E7%9A%84%E9%82%AE%E4%BB%B6OOM%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="虾仔的秘密基地">
-<meta property="og:description" content="创建线程池的几种方式1.jdk自带的几种线程池方案: 123456ExecutorService executorService &#x3D; Executors.newFixedThreadPool(10);ExecutorService executorService1 &#x3D; Executors.newCachedThreadPool();ExecutorService executorService2">
+<meta property="og:description" content="项目概况:结合街道办事处日常的工作场景,以街道办管辖的社区及人员结构为基础.开发了一套”通知”,”统计”,”任务分派”等功能合集的效率办公平台. 项目部署在客户现场,两台4核16G服务器100,101ip段. 100机部署无高io应用 101机部署IO高应用及数据库 起因:客户反馈’’通知’’应用中的附件发送到邮件时提示”发送失败”. 排查问题:首先从报错接口定位到项目具体controller对应">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-04T09:37:48.000Z">
-<meta property="article:modified_time" content="2024-07-05T03:41:36.629Z">
+<meta property="article:published_time" content="2024-07-02T09:38:44.000Z">
+<meta property="article:modified_time" content="2024-07-05T06:20:32.475Z">
 <meta property="article:author" content="yang zheng">
-<meta property="article:tag" content="Thread">
-<meta property="article:tag" content="ThreadPool">
-<meta property="article:tag" content="线程池">
-<meta property="article:tag" content="多线程">
+<meta property="article:tag" content="oom">
+<meta property="article:tag" content="debug">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>(⌨Java) 线程池 - 虾仔的秘密基地</title>
+  <title>(📒Note) java.lang.OutOfMemoryError：Java_heap_space发送带有附件的邮件OOM问题 - 虾仔的秘密基地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="(⌨Java) 线程池"></span>
+            <span id="subtitle" data-typed-text="(📒Note) java.lang.OutOfMemoryError：Java_heap_space发送带有附件的邮件OOM问题"></span>
           
         </div>
 
@@ -211,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-04 17:37" pubdate>
-          2024年7月4日 下午
+        <time datetime="2024-07-02 17:38" pubdate>
+          2024年7月2日 下午
         </time>
       </span>
     
@@ -223,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          713 字
+          447 字
         
       </span>
     
@@ -234,7 +232,7 @@
         
         
         
-          6 分钟
+          4 分钟
         
       </span>
     
@@ -284,12 +282,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">(⌨Java) 线程池</h1>
+            <h1 id="seo-header">(📒Note) java.lang.OutOfMemoryError：Java_heap_space发送带有附件的邮件OOM问题</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-05T11:41:36+08:00
+                    本文最后更新于 2024-07-05T14:20:32+08:00
                   
                   
 
@@ -299,47 +297,23 @@
             
               <div class="markdown-body">
                 
-                <h4 id="创建线程池的几种方式"><a href="#创建线程池的几种方式" class="headerlink" title="创建线程池的几种方式"></a>创建线程池的几种方式</h4><p>1.jdk自带的几种线程池方案:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">executorService</span> <span class="hljs-operator">=</span> Executors.newFixedThreadPool(<span class="hljs-number">10</span>);<br><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">executorService1</span> <span class="hljs-operator">=</span> Executors.newCachedThreadPool();<br><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">executorService2</span> <span class="hljs-operator">=</span> Executors.newSingleThreadExecutor();<br><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">executorService3</span> <span class="hljs-operator">=</span> Executors.newWorkStealingPool();<br><span class="hljs-type">ScheduledExecutorService</span> <span class="hljs-variable">scheduledExecutorService</span> <span class="hljs-operator">=</span> Executors.newScheduledThreadPool(<span class="hljs-number">10</span>);<br><span class="hljs-type">ScheduledExecutorService</span> <span class="hljs-variable">scheduledExecutorService1</span> <span class="hljs-operator">=</span> Executors.newSingleThreadScheduledExecutor();<br></code></pre></td></tr></table></figure>
-
-<p>2.手动创建线程池</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ThreadPoolExecutor</span> <span class="hljs-variable">threadPoolExecutor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>(<br>        <span class="hljs-number">5</span>, <span class="hljs-comment">//核心线程数</span><br>        <span class="hljs-number">5</span>, <span class="hljs-comment">//最大线程数</span><br>        <span class="hljs-number">60L</span>, <span class="hljs-comment">//线程空闲存活时间</span><br>        TimeUnit.SECONDS, <span class="hljs-comment">//线程空闲存活时间单位</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedBlockingQueue</span>&lt;&gt;(<span class="hljs-number">10</span>), <span class="hljs-comment">//阻塞队列</span><br>        myThreadFactory, <span class="hljs-comment">//线程工厂</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>.AbortPolicy()); <span class="hljs-comment">//拒绝策略</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="线程池的7个核心参数"><a href="#线程池的7个核心参数" class="headerlink" title="线程池的7个核心参数"></a>线程池的7个核心参数</h4><ul>
-<li>CorePoolSize 核心线程数</li>
-<li>MaximumPoolSize 最大线程数</li>
-<li>BlockingQueue 阻塞队列</li>
-<li>KeepAliveTime 空闲线程存活时间</li>
-<li>TimeUnit 时间单位</li>
-<li>ThreadFactory 线程工厂</li>
-<li>RejectedExecutionHandler 拒绝策略</li>
-</ul>
-<h5 id="corePoolSize-核心线程数"><a href="#corePoolSize-核心线程数" class="headerlink" title="corePoolSize 核心线程数"></a>corePoolSize 核心线程数</h5><p>核心线程数表示线程正常执行任务时的线程个数.</p>
-<h5 id="maximumPoolSize-最大线程数"><a href="#maximumPoolSize-最大线程数" class="headerlink" title="maximumPoolSize 最大线程数"></a>maximumPoolSize 最大线程数</h5><p>如果核心线程数都在执行任务,并且阻塞队列已满,此时会允许创建小于最大线程个数的线程去执行任务.</p>
-<h5 id="blockingQueue-阻塞队列"><a href="#blockingQueue-阻塞队列" class="headerlink" title="blockingQueue 阻塞队列"></a>blockingQueue 阻塞队列</h5><p>核心线程都在执行任务,额外的任务将会保存在阻塞队列中等待执行.</p>
-<p>阻塞队列提供了几个实现类:</p>
-<p>ArrayBlockingQueue 数组阻塞队列: 数组结构,有界队列</p>
-<p>LinkedBlockingQueue 链表阻塞队列: 链表结构,无界队列</p>
-<p>SynchronousQueue 直接切换队列: 不持有任务,如果有任务需要进入队列, 则会试图去开启一个线程立即运行,否则拒绝任务</p>
-<h5 id="keepAliveTime-空闲线程保留时间"><a href="#keepAliveTime-空闲线程保留时间" class="headerlink" title="keepAliveTime 空闲线程保留时间"></a>keepAliveTime 空闲线程保留时间</h5><p>线程执行任务时被创建,当执行完任务时处于空闲,避免多余资源消耗而规定线程的保留时间.</p>
-<h5 id="timeUnit-线程保留时间单位"><a href="#timeUnit-线程保留时间单位" class="headerlink" title="timeUnit 线程保留时间单位"></a>timeUnit 线程保留时间单位</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">TimeUnit.DAYS; <span class="hljs-comment">//日</span><br>TimeUnit.HOURS; <span class="hljs-comment">//小时</span><br>TimeUnit.MINUTES; <span class="hljs-comment">//分</span><br>TimeUnit.SECONDS; <span class="hljs-comment">//秒</span><br>TimeUnit.MILLISECONDS; <span class="hljs-comment">//毫秒</span><br>TimeUnit.MICROSECONDS; <span class="hljs-comment">//微妙</span><br>TimeUnit.NANOSECONDS; <span class="hljs-comment">//纳秒</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="threadFactory-线程工厂"><a href="#threadFactory-线程工厂" class="headerlink" title="threadFactory 线程工厂"></a>threadFactory 线程工厂</h5><p>用于创建线程,自定义时需要实现接口<code>ThreadFactory</code>接口并重写方法<code>newThread</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ThreadFactory</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">AtomicInteger</span> <span class="hljs-variable">threadNum</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AtomicInteger</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">namePreifx</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;threadPool-currentThreadNum-&quot;</span>;<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Thread <span class="hljs-title function_">newThread</span><span class="hljs-params">(Runnable r)</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">ThreadName</span> <span class="hljs-operator">=</span> namePreifx + threadNum.getAndIncrement();<br>        <span class="hljs-type">CustomThreadGroup</span> <span class="hljs-variable">customThreadGroup</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomThreadGroup</span>(<span class="hljs-string">&quot;custom_group&quot;</span>);<br>        <span class="hljs-comment">//非守护线程</span><br>        customThreadGroup.setDaemon(<span class="hljs-literal">false</span>);<br>        <span class="hljs-comment">//优先级最大</span><br>        customThreadGroup.setMaxPriority(Thread.MAX_PRIORITY);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(r,ThreadName);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomThreadGroup</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ThreadGroup</span>&#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">CustomThreadGroup</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">super</span>(name);<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">uncaughtException</span><span class="hljs-params">(Thread t, Throwable e)</span> &#123;<br>        Log.debug(<span class="hljs-string">&quot;thread : &quot;</span> + t.getName() + e.getMessage());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>ThreadFactory的作用就是提供创建线程的功能和线程工厂</li>
-<li>它是通过newThread()来创建线程,方法接收的任务是Runnable对象</li>
-<li>它默认创建的线程都是”非守护线程”而且线程优先级都是Thread.NORM_PRIORITY</li>
-</ul>
-<h5 id="rejectedExecutionHandler-拒绝策略"><a href="#rejectedExecutionHandler-拒绝策略" class="headerlink" title="rejectedExecutionHandler 拒绝策略"></a>rejectedExecutionHandler 拒绝策略</h5><p><code>rejectedExecutionHandler</code>是一个接口,实现接口并重写方法<code>rejectedExecution</code>用于处理线程池拒绝策略</p>
-<h4 id="JDK四种拒绝策略实现"><a href="#JDK四种拒绝策略实现" class="headerlink" title="JDK四种拒绝策略实现"></a>JDK四种拒绝策略实现</h4><p>AbortPolicy : 拒绝任务并抛出异常<code>RejectedExecutionException</code></p>
-<p>DiscardPolicy : 静默拒绝,不抛出异常</p>
-<p>DiscardOldestPolicy : 如果线程池未停止,则删除阻塞队列最前端任务(queue.poll()),并试图执行当前任务(threadPoolExecutor.excute()).</p>
-<p>CallerRunsPolicy : 如果线程池未停止,则让调用线程自己执行任务(Runnable.run())</p>
-<ul>
-<li>线程池默认的拒绝策略是 AbortPolicy</li>
-</ul>
+                <h4 id="项目概况"><a href="#项目概况" class="headerlink" title="项目概况:"></a>项目概况:</h4><p>结合街道办事处日常的工作场景,以街道办管辖的社区及人员结构为基础.开发了一套”通知”,”统计”,”任务分派”等功能合集的效率办公平台.</p>
+<p>项目部署在客户现场,两台4核16G服务器100,101ip段.</p>
+<p>100机部署无高io应用</p>
+<p>101机部署IO高应用及数据库</p>
+<h4 id="起因"><a href="#起因" class="headerlink" title="起因:"></a>起因:</h4><p>客户反馈’’通知’’应用中的附件发送到邮件时提示”发送失败”.</p>
+<h4 id="排查问题"><a href="#排查问题" class="headerlink" title="排查问题:"></a>排查问题:</h4><p>首先从报错接口定位到项目具体controller对应的方法,在日志中查看错误信息为java堆溢出错误</p>
+<p>org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.OutOfMemoryError: Java heap space</p>
+<p>接着检查项目代码是否存在问题,发现代码需要通过feign接口到oss服务获取文件字节码,此处有可能会出现文件过大导致接口异常或者jvm内存溢出的可能(取决于项目启动参数定义的大小与服务器的实际内存大小)</p>
+<p>接着 查看oss服务日志,发现oss报错Caused by: java.io.IOException: Connection reset by peer</p>
+<p>经过排查,oss异常原因是message导致的.</p>
+<p>最后通过本地启动项目,在测试环境模拟复现问题,发现一下可能的原因:</p>
+<p>1.feign接口日志级别 feignLogConfig,定义的级别为FULL,feign接口请求时,日志为所有内容,内容过大,传递信息过多</p>
+<p>2.备用服务器没有外网,无法发送邮件</p>
+<p>3.阿里云邮件服务中附件大小不能超过15M</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h4><p>将message服务转移到100机带有外网环境的服务器下,功能正常.</p>
+<p>但是代码中没有做文件大小限制,需要优化</p>
+<p>日志级别也调整到HEADER级别</p>
 
                 
               </div>
@@ -358,7 +332,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E2%8C%A8Java/" class="category-chain-item">⌨Java</a>
+  <a href="/categories/%F0%9F%93%92Note/" class="category-chain-item">📒Note</a>
   
   
 
@@ -373,13 +347,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Thread/" class="print-no-link">#Thread</a>
+        <a href="/tags/oom/" class="print-no-link">#oom</a>
       
-        <a href="/tags/ThreadPool/" class="print-no-link">#ThreadPool</a>
-      
-        <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="print-no-link">#线程池</a>
-      
-        <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="print-no-link">#多线程</a>
+        <a href="/tags/debug/" class="print-no-link">#debug</a>
       
     </div>
   
@@ -391,8 +361,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>(⌨Java) 线程池</div>
-      <div>https://lidll.github.io/2024/07/04/线程池相关/</div>
+      <div>(📒Note) java.lang.OutOfMemoryError：Java_heap_space发送带有附件的邮件OOM问题</div>
+      <div>https://lidll.github.io/2024/07/02/java-lang-OutOfMemoryError-Java-heap-space发送带有附件的邮件OOM问题/</div>
     </div>
     <div class="license-meta">
       
@@ -404,7 +374,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月4日</div>
+          <div>2024年7月2日</div>
         </div>
       
       
@@ -436,9 +406,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/05/%E8%A7%A3%E5%86%B3-Cannot-determine-embedded-database-driver-class-for-database-type-NONE/" title="(📒Note) 解决 Cannot determine embedded database driver class for database type NONE">
+                      <a href="/2024/07/03/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="(🔗Git) git常用命令">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">(📒Note) 解决 Cannot determine embedded database driver class for database type NONE</span>
+                        <span class="hidden-mobile">(🔗Git) git常用命令</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -446,8 +416,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%846%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" title="(⌨Java) 面向对象的6个基本原则">
-                        <span class="hidden-mobile">(⌨Java) 面向对象的6个基本原则</span>
+                      <a href="/2024/07/02/vue-cli%E7%9A%84%E4%BD%BF%E7%94%A8/" title="(💻️Front) vue-cli的使用">
+                        <span class="hidden-mobile">(💻️Front) vue-cli的使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
