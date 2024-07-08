@@ -23,20 +23,20 @@
 <meta property="og:site_name" content="虾仔的秘密基地">
 <meta property="og:description" content="redis.&#x2F;redis-server ..&#x2F;redis.conf .&#x2F;redis-cli -p 6379 redis性能测试.&#x2F;redis-benchmark -h localhost -p 6379 -c 100 -n 100000 五大数据类型redis-key 连接数据库 &#x2F;redis-cli -p 6379 切换数据库 select 0">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210408163752409.png">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210408163834760.png">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210408163928740.png">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210409150642504.png">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210409153316002.png">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210409153706360.png">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210409173905051.png">
-<meta property="og:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210409174028930.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210408163752409.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210408163834760.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210408163928740.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210409150642504.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210409153316002.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210409153706360.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210409173905051.png">
+<meta property="og:image" content="https://lidll.github.io/image/postImage/image-20210409174028930.png">
 <meta property="article:published_time" content="2024-07-04T09:24:22.000Z">
-<meta property="article:modified_time" content="2024-07-05T03:42:43.682Z">
+<meta property="article:modified_time" content="2024-07-08T08:55:05.277Z">
 <meta property="article:author" content="yang zheng">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lidll.github.io/Users/noah/Documents/md/image-20210408163752409.png">
+<meta name="twitter:image" content="https://lidll.github.io/image/postImage/image-20210408163752409.png">
   
   
   
@@ -200,7 +200,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/image/default_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -295,7 +295,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-05T11:42:43+08:00
+                    本文最后更新于 2024-07-08T16:55:05+08:00
                   
                   
 
@@ -499,17 +499,17 @@
 <blockquote>
 <p>单位</p>
 </blockquote>
-<p><img src="/Users/noah/Documents/md/image-20210408163752409.png" srcset="/img/loading.gif" lazyload alt="image-20210408163752409"></p>
+<p><img src="/image/postImage/image-20210408163752409.png" srcset="/img/loading.gif" lazyload></p>
 <p>1.配置文件 unit单位 对大小写不敏感</p>
 <blockquote>
 <p>包含</p>
 </blockquote>
-<p><img src="/Users/noah/Documents/md/image-20210408163834760.png" srcset="/img/loading.gif" lazyload alt="image-20210408163834760"></p>
+<p><img src="/image/postImage/image-20210408163834760.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以把配置文件都包含过来</p>
 <blockquote>
 <p>网络</p>
 </blockquote>
-<p><img src="/Users/noah/Documents/md/image-20210408163928740.png" srcset="/img/loading.gif" lazyload alt="image-20210408163928740"></p>
+<p><img src="/image/postImage/image-20210408163928740.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">bind 172.0.0.1 #绑定的ip<br>protected-mode yes #保护模式<br>port 6379 #端口<br></code></pre></td></tr></table></figure>
 
 <blockquote>
@@ -634,7 +634,7 @@
 <p>多层链路</p>
 </blockquote>
 <p>上一个master链接slave</p>
-<p><img src="/Users/noah/Documents/md/image-20210409150642504.png" srcset="/img/loading.gif" lazyload alt="image-20210409150642504"></p>
+<p><img src="/image/postImage/image-20210409150642504.png" srcset="/img/loading.gif" lazyload></p>
 <p>此时81节点还是为slave,所以依然不能写入,但是为82的master</p>
 <p>81同步80数据,82同步81数据</p>
 <p>如果80宕机,使用命令  SLAVEOF no one 可以使用81变为master.其他节点就可以手动链接导最新的主节点</p>
@@ -642,14 +642,14 @@
 <p>redis从2.8开始正式提供了sentinel(哨兵)架构来解决这个问题</p>
 <p>&#x3D;&#x3D;自动将从库转换为主库&#x3D;&#x3D;</p>
 <p> 哨兵模式是一种特殊的模式,首先redis提供了哨兵的命令,哨兵是一个独立的进程,作为进程,他会独立运行.其原理是哨兵通过发送命令,等待redis服务器响应,从而监控运行的多个redis实例.</p>
-<p><img src="/Users/noah/Documents/md/image-20210409153316002.png" srcset="/img/loading.gif" lazyload alt="image-20210409153316002"></p>
+<p><img src="/image/postImage/image-20210409153316002.png" srcset="/img/loading.gif" lazyload></p>
 <p> 哨兵有两个作用:</p>
 <ul>
 <li>通过发送命令,让redis服务器返回监控其运行状态,包括主服务器和从服务</li>
 <li>当哨兵检查导master宕机,会自动将slave切换成master,然后通过发布订阅模式同事其他的从服务器,修改配置文件,让他们切换主机.</li>
 </ul>
 <p>然而一个哨兵进程对redis服务器进行监控,可能会出现问题,为此,我们可以使用多个哨兵进行监控.各个哨兵之间还会进行监控,这样就形成了多哨兵模式.</p>
-<p><img src="/Users/noah/Documents/md/image-20210409153706360.png" srcset="/img/loading.gif" lazyload alt="image-20210409153706360"></p>
+<p><img src="/image/postImage/image-20210409153706360.png" srcset="/img/loading.gif" lazyload></p>
 <p>假设主服务器宕机,哨兵1先检查导这个结果.系统并不会马上进行failover过程,仅仅是哨兵1主观的认为主服务器不可用,这个现象称为<em><strong>主观下线</strong></em>.当后面的哨兵也检测到主服务器不可用,并且数量达到一定值时,那么哨兵之间就会进行一次投票,投票的结果由一个哨兵发起,进行failover[故障转移]操作.切换成功后,就会通过发布订阅通知,让各个哨兵把自己监控的从服务器实现切换主机,这个过程成为<em><strong>客观下线</strong></em>.</p>
 <blockquote>
 <p>测试</p>
@@ -683,10 +683,10 @@
 </blockquote>
 <p>布隆过滤器</p>
 <p>布隆过滤器是一种数据结构,对所有可能查询的参数以hash形式存储,在控制层先进行校验,不符合则丢弃.从而避免了对底层存储系统的查询压力</p>
-<p><img src="/Users/noah/Documents/md/image-20210409173905051.png" srcset="/img/loading.gif" lazyload alt="image-20210409173905051"></p>
+<p><img src="/image/postImage/image-20210409173905051.png" srcset="/img/loading.gif" lazyload></p>
 <p>缓存空对象</p>
 <p>当存储层不命中后,即使返回的空对象也将其缓存起来,同时会设置一个过期时间,之后再访问这个数据将会从缓存中获取,保护了后端数据源</p>
-<p><img src="/Users/noah/Documents/md/image-20210409174028930.png" srcset="/img/loading.gif" lazyload alt="image-20210409174028930"></p>
+<p><img src="/image/postImage/image-20210409174028930.png" srcset="/img/loading.gif" lazyload></p>
 <p>但是这种方法会存在两个问题:</p>
 <p>1.如果空值能够被缓存起来,这就意味着缓存需要更多的空间存储更多的键,因为当中可能会有很多的空值的键</p>
 <p>2.即使对空值设置了过期时间,还是会存在缓存层和存储层的数据会有一段时间不一致,这对于需要保持一致的业务会有影响</p>

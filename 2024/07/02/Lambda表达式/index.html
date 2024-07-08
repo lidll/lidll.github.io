@@ -23,14 +23,11 @@
 <meta property="og:site_name" content="虾仔的秘密基地">
 <meta property="og:description" content="Lambda表达式Java8新引入的语法糖 Lambda表达式（关于lambda表达式是否属于语法糖存在很多争议，有人说他并不是语法糖，这里我们不纠结于字面表述）。Lambda表达式是一种用于取代匿名类，把函数行为表述为函数式编程风格的一种匿名函数，这里再重申一下：Lambda表达式的执行结果是函数式接口的一个匿名对象（Lambda表达式的基本语法在初级课程已经讲过，在此不做赘述）。 1. 示例代">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:/%E5%B7%A5%E4%BD%9C/03_%E8%B5%84%E6%96%99/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AF%B9%E5%BA%94%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB.png">
-<meta property="og:image" content="d:/%E5%B7%A5%E4%BD%9C/03_%E8%B5%84%E6%96%99/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BC%96%E8%AF%91%E5%92%8C%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
 <meta property="article:published_time" content="2024-07-02T09:19:18.000Z">
-<meta property="article:modified_time" content="2024-07-05T03:42:22.466Z">
+<meta property="article:modified_time" content="2024-07-08T09:03:31.983Z">
 <meta property="article:author" content="yang zheng">
 <meta property="article:tag" content="Lambda">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="d:/%E5%B7%A5%E4%BD%9C/03_%E8%B5%84%E6%96%99/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AF%B9%E5%BA%94%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB.png">
   
   
   
@@ -194,7 +191,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/image/default_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -289,7 +286,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-05T11:42:22+08:00
+                    本文最后更新于 2024-07-08T17:03:31+08:00
                   
                   
 
@@ -346,7 +343,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">System.setProperty(<span class="hljs-string">&quot;jdk.internal.lambda.dumpProxyClasses&quot;</span>, <span class="hljs-string">&quot;out/production/&quot;</span>);<br></code></pre></td></tr></table></figure>
 
 <p><strong>程序运行之后</strong>，会将Lambda表达式对应的内部类文件生成出来<code>com.boxuegu.intermediate.language.sugar.lambda.LambdaTest$$Lambda$1</code>：</p>
-<p><img src="D:/工作/03_资料/lambda表达式对应的内部类.png" srcset="/img/loading.gif" lazyload alt="1560239569399"></p>
+<!-- ![1560239569399](D:/工作/03_资料/lambda表达式对应的内部类.png) -->
+
 <p>反编译这个类，代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.invoke.LambdaForm;<br><span class="hljs-keyword">import</span> java.util.function.Consumer;<br><br><span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LambdaTest$$Lambda$1</span><br><span class="hljs-keyword">implements</span> <span class="hljs-title class_">Consumer</span> &#123; <span class="hljs-comment">// 实现函数式接口</span><br>    <span class="hljs-keyword">private</span> LambdaTest$$Lambda$<span class="hljs-number">1</span>() &#123;<br>    &#125;<br><br>    <span class="hljs-meta">@LambdaForm</span>.Hidden<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(Object object)</span> &#123; <span class="hljs-comment">// 重写抽象方法</span><br>        LambdaTest.lambda$main$<span class="hljs-number">0</span>((String)object);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -360,7 +358,8 @@
 </ol>
 </blockquote>
 <h2 id="5-Lambda表达式编译和运行过程"><a href="#5-Lambda表达式编译和运行过程" class="headerlink" title="5. Lambda表达式编译和运行过程"></a>5. Lambda表达式编译和运行过程</h2><p>至此，我们只窥视了Lambda表达式底层实现的冰山一角。接下来会有一堆概念和过程，慎入！</p>
-<p><img src="D:/工作/03_资料/Lambda表达式编译和运行过程.png" srcset="/img/loading.gif" lazyload alt="1560239569399"></p>
+<!-- ![1560239569399](D:/工作/03_资料/Lambda表达式编译和运行过程.png) -->
+
 <ol>
 <li>Java7在<a target="_blank" rel="noopener" href="https://jcp.org/en/jsr/detail?id=292">JSR（Java Specification Requests，Java 规范提案） 292</a>中增加了对动态类型语言的支持，使得Java也可以像<em>C语言</em>那样将方法作为参数传递，其实现在<code>java.lang.invoke</code>包中。它的核心就是<code>invokedynamic</code>指令，为后面<strong>函数式编程</strong>和<strong>响应式编程</strong>提供了前置支持。</li>
 <li><code>invokedynamic</code>指令对应的执行方法会关联到一个<em>动态</em>调用点对象（<code>java.lang.invoke.CallSite</code>），一个调用点（call site）是一个方法句柄（method handle，调用点的目标）的持有者，这个调用点对象会指向一个具体的引导方法（bootstrap method，比如<code>metafactory()</code>），引导方法成功调用之后，调用点的目标将会与它持有的方法句柄的引用永久绑定，最终得到一个实现了函数式接口（比如Consumer）的对象。</li>
